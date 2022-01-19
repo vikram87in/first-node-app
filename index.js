@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
     // fetchData()
     fetchDataWithAxios()
         .then(data => {
-            res.render('index', { text: 'World', title: 'Node Practice', data, fName });
+            res.render('index', { text: 'Anonymous', title: 'Node Practice', data, fName });
         })
         .catch(err => res.render('index', {
             error: true, message: 'Sorry, the data could not be fetched',

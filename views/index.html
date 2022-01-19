@@ -9,37 +9,43 @@
         <%= locals.title %>
     </title>
     <link rel="stylesheet" href="style.css">
+    <script src="file2.js" defer></script>
 </head>
 
 <body>
-    <h1>This is a demo page for <%= fName %>
-    </h1>
-    <% if (locals.error) { %>
-        <h2>
-            <%= locals.message %>: <%= locals.errorMsg %>
-        </h2>
-        <% } else { %>
-            <h2>Hello <%= locals.text ?? 'Vik' %>
+    <%- include('./shared/header.html', {name: 'Vikram', showSubheading: true}) %>
+        <% if (locals.error) { %>
+            <h2>
+                <%= locals.message %>: <%= locals.errorMsg %>
             </h2>
-            <ul>
-                <% locals.data && locals.data.forEach((element, index)=> { %>
-                    <% if (index < 10) { %>
-                        <li>
-                            <strong>
-                                <%- element.email %>:
-                            </strong>
-                            <%=element.body %>
-                        </li>
-                        <li>
-                            <strong>
-                                <%= element.email %>:
-                            </strong>
-                            <%= element.body %>
-                        </li>
-                        <% } %>
-                            <% }) %>
-            </ul>
-            <% } %>
+            <% } else { %>
+                <h2>Hello <%= locals.text ?? 'Vik' %>
+                </h2>
+                <ul>
+                    <% locals.data && locals.data.forEach((element, index)=> { %>
+                        <% if (index < 10) { %>
+                            <li>
+                                <strong>
+                                    <%- element.email %>:
+                                </strong>
+                                <%=element.body %>
+                            </li>
+                            <li>
+                                <strong>
+                                    <%= element.email %>:
+                                </strong>
+                                <%= element.body %>
+                            </li>
+                            <% } %>
+                                <% }) %>
+                </ul>
+                <% } %>
+                    <%- include('./shared/header.html', {name: locals.text, showSubheading: false}) %>
+
+                        <script>
+                            var text = '<%= locals.text %>';
+                            console.log(text);
+                        </script>
 </body>
 
 </html>
